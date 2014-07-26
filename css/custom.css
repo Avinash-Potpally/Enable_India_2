@@ -1,0 +1,9 @@
+navBar{
+    background-color: white;
+    text-align: center;
+}
+
+.sideLists a{
+    text-decoration: none;
+        color:black;
+}
