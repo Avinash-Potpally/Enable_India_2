@@ -55,19 +55,45 @@
                         <li><a href="#">Site Map</a></li><br><br>
                     </ul>
                 </div>
-                <div class="col-md-3 col-md-offset-7" style="background-color:white; opacity:.95; border-radius:12px;" >
+                <div class="col-md-9 col-md-offset-1" style="background-color:white; opacity:.95; border-radius:12px;" >
                     <br>
                     <!--<span id="quote">"No one has ever become poor by helping!"</span>-->
                     <form action="" method="">
+                        <input type="text" id="name" placeholder="Enter  name.." class=" form-control reg" style="text-align:center;">
                         <br>
-                        <input type="text" id="username" class="form-control " placeholder="Username">
+                        <input type="text" id="email" placeholder="Enter  emailid.." class="form-control" style="text-align:center;width:50%;"><br>
+                        
+                        <input type="password" placeholder="Enter Password.." class="form-control" style="width:250px;text-align:center;">
                         <br>
-                        <input type="text" id="Password" class="form-control " placeholder="Password">
+                        
+                        
+                        
+                        <input type="text" placeholder="Confirm Password.." class="form-control" style="width:250px;text-align:center;"><br>
+                        <input type="text" placeholder="Enter Mobile Number.." class="form-control" style="width:250px;text-align:center;">
+                        <span style="margin-left:350px;font-family:matura mt script capitals;color:red;font-size:25px;">Just a few details and you are aboard!!</span>
                         <br>
-                        <input type="submit" value="Login!" id="login" class="btn btn-primary  "><br>
-                        <span style="margin-left:75px;"><a href="#">Forgot Password?</a></span>
+                        <input type="date" placeholder="Date of Birth" class="form-control" style="width:250px;text-align:center;"><br>
+                        
+                        <input type="text" class="form-control" placeholder="SkypeID" style="text-align:center; width: 50%; position:relative;">
+                        
+               <br>     
+                        <input type="text" class="form-control" placeholder="Facebook id" style="text-align:center; width: 50%; position:relative;"><br>
+                        <select class="form-control" style="width:250px;text-align:center;">
+                            <option>Select Qualification..</option>
+                            <option>B.E/B.Tech</option>
+                            <option>M.Tech</option>
+                        </select>
                         <br>
-                        &nbsp;<span style="margin-left:75px;"><a href="#">Register here</a></span>
+                        
+                        <select class="form-control" style="width:250px;text-align:center;">
+                            <option>Select Role..</option>
+                            <option>Mentor</option>
+                            <option>Mentee</option>
+                            <option>Moderator</option>
+                        </select>
+                        <br>
+                        <input type="button" value="Submit!" class="btn btn-primary" style="margin-left:50%;">
+                        
 
                     </form>
                 </div>
