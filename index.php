@@ -58,11 +58,11 @@
                 <div class="col-md-3 col-md-offset-7" style="background-color:white; opacity:.95; border-radius:12px;" >
                     <br>
                     <!--<span id="quote">"No one has ever become poor by helping!"</span>-->
-                    <form action="" method="">
+                    <form action="login_valid.php" method="GET">
                         <br>
-                        <input type="text" id="username" class="form-control " placeholder="Username">
+                        <input type="text" id="username" name="uname" class="form-control " placeholder="Username">
                         <br>
-                        <input type="text" id="Password" class="form-control " placeholder="Password">
+                        <input type="password" id="Password" name="pwd" class="form-control " placeholder="Password">
                         <br>
                         <input type="submit" value="Login!" id="login" class="btn btn-primary  "><br>
                         <span style="margin-left:75px;"><a href="#">Forgot Password?</a></span>
