@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 26, 2014 at 01:03 PM
+-- Generation Time: Jul 26, 2014 at 12:40 PM
 -- Server version: 5.5.38
 -- PHP Version: 5.3.10-1ubuntu3.13
 
@@ -19,24 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `EnableIndia`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activity`
---
-
-CREATE TABLE IF NOT EXISTS `activity` (
-  `task_id` int(7) NOT NULL AUTO_INCREMENT,
-  `m_id` int(5) NOT NULL,
-  `mt_id` int(5) NOT NULL,
-  `desc` varchar(50) NOT NULL,
-  `resources` varchar(50) NOT NULL,
-  `upload_time` datetime NOT NULL,
-  `submission_time` datetime NOT NULL,
-  `submission` mediumblob NOT NULL,
-  PRIMARY KEY (`task_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -112,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `user_info` (
   `skypeId` varchar(30) NOT NULL,
   `facebookId` varchar(30) NOT NULL,
   `role` varchar(15) NOT NULL,
-  `status` varchar(11) NOT NULL DEFAULT 'pending',
+  `status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
