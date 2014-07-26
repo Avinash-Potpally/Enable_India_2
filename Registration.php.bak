@@ -18,7 +18,7 @@
 		{
 		 $rowset = mysql_query("insert into user_info values ('','$name','$email','$pw','$qual','','$dob','$ph','','$gen','$skype','$fb','$role','')");
 		 //echo"<script>alert('Success');window.location='./index.php';</script>";
-		 //echo"1";
+		 echo"1";
 		}
 		else
 		{
@@ -26,7 +26,7 @@
 		echo 'alert("message successfully sent")';
 		echo '</script>';
 		//header( 'Location: registrationForm.php' ) ;
-		//echo "2";
+		echo "2";
 		
 		}
 		
