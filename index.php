@@ -55,7 +55,14 @@
                         <li><a href="#">Site Map</a></li><br><br>
                     </ul>
                 </div>
-                <div class="col-md-3 col-md-offset-7" style="background-color:white; opacity:.95; border-radius:12px;" >
+                <div class="col-md-5 col-md-offset-1" style="background-color:white; border-radius:12px;">
+                    <h2 style="font-family:matura mt script capitals;color:black;font-size:20px;">No one has ever become poor by helping!</h2>
+                    <p style="padding:5px;">
+                        We look to provide help to the physically challenged from people who have overcome the same problems 
+                        or from a few people who think sharing their bit of a knowledge if the least they could do help the needy people of this beautiful world.
+                    </p>
+                </div>
+                <div class="col-md-3 col-md-offset-1" style="background-color:white; opacity:.95; border-radius:12px;" >
                     <br>
                     <!--<span id="quote">"No one has ever become poor by helping!"</span>-->
                     <form action="login_valid.php" method="GET">
@@ -71,6 +78,9 @@
 
                     </form>
                 </div>
+            </div>
+            <div class="row">
+                <span style="font-family:matura mt script capitals;color:white;font-size:50px; margin-top:450px;">Welcome to a world without limits!</span>
             </div>
         </div>
         
