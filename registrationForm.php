@@ -7,6 +7,16 @@
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+function validateForm()
+{
+if(document.Registration form.password.value.compare(document.Registration form.confirm_password.value)!=0)
+{
+alert("Re-enter Confirm password!!!");
+}
+
+}
+</script>
     </head>
     <body background="img/background.jpg" style="background-color:#808080">
         <div class="container" >
@@ -58,43 +68,46 @@
                 <div class="col-md-9 col-md-offset-1" style="background-color:white; opacity:.95; border-radius:12px;" >
                     <br>
                     <!--<span id="quote">"No one has ever become poor by helping!"</span>-->
-                    <form action="" method="">
-                        <input type="text" id="name" placeholder="Enter  name.." class=" form-control reg" style="text-align:center;">
+                    <form action="./Registration.php" method="POST" >
+                        <input type="text" name="uname" id="name" placeholder="Enter  name.." class=" form-control reg" style="text-align:center;" required>
                         <br>
-                        <input type="text" id="email" placeholder="Enter  emailid.." class="form-control" style="text-align:center;width:50%;"><br>
+                        <input type="text" name="email" id="email" placeholder="Enter  emailid.." class="form-control" style="text-align:center;width:50%;" required><br>
                         
-                        <input type="password" placeholder="Enter Password.." class="form-control" style="width:250px;text-align:center;">
+                        <input type="password" name="password" placeholder="Enter Password.." class="form-control" style="width:250px;text-align:center;" required>
                         <br>
                         
                         
-                        
-                        <input type="text" placeholder="Confirm Password.." class="form-control" style="width:250px;text-align:center;"><br>
-                        <input type="text" placeholder="Enter Mobile Number.." class="form-control" style="width:250px;text-align:center;">
+                        <input type="password" name="repassword"placeholder="Confirm Password.." class="form-control" style="width:250px;text-align:center;" required><br>
+                        <input type="tel" pattern="[0-9]{10,10}" name="tel" maxlength="10" placeholder="Enter Mobile Number.." class="form-control" style="width:250px;text-align:center;" required>
                         <span style="margin-left:350px;font-family:matura mt script capitals;color:red;font-size:25px;">Just a few details and you are aboard!!</span>
                         <br>
-                        <input type="date" placeholder="Date of Birth" class="form-control" style="width:250px;text-align:center;"><br>
+                        <input type="date" placeholder="Date of Birth" name="dob" class="form-control" style="width:250px;text-align:center;" required><br>
                         
-                        <input type="text" class="form-control" placeholder="SkypeID" style="text-align:center; width: 50%; position:relative;">
+                        <input type="text" class="form-control" name="skype" placeholder="SkypeID" style="text-align:center; width: 50%; position:relative;" required>
                         
                <br>     
-                        <input type="text" class="form-control" placeholder="Facebook id" style="text-align:center; width: 50%; position:relative;"><br>
-                        <select class="form-control" style="width:250px;text-align:center;">
+                        <input type="text" class="form-control" name="fb" placeholder="Facebook id" style="text-align:center; width: 50%; position:relative;" required><br>
+                        <select name="qual" class="form-control" style="width:250px;text-align:center;" required>
                             <option>Select Qualification..</option>
                             <option>B.E/B.Tech</option>
                             <option>M.Tech</option>
                         </select>
                         <br>
-                        
-                        <select class="form-control" style="width:250px;text-align:center;">
+                        <select name="gender" class="form-control" style="width:250px;text-align:center;" required>
+                            <option>Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                        <br>
+                        <select name="role" class="form-control" style="width:250px;text-align:center;" required>
                             <option>Select Role..</option>
                             <option>Mentor</option>
                             <option>Mentee</option>
                             <option>Moderator</option>
                         </select>
                         <br>
-                        <input type="button" value="Submit!" class="btn btn-primary" style="margin-left:50%;">
+                        <input type="submit" value="Submit!" class="btn btn-primary" style="margin-left:50%;">
                         
-
                     </form>
                 </div>
             </div>
