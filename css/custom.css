@@ -7,3 +7,29 @@ navBar{
     text-decoration: none;
         color:black;
 }
+#username{
+    width: 150px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+ 
+
+#password{
+    width: 150px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+#quote{
+    margin-left:250px;
+    margin-top:150px;
+    padding:10px;
+    font-family:"Lucida Console", Monaco, monospace
+}
+#login{
+    width: 110px;
+    margin-left:80px;;
+    margin-right:auto;
+    text-align: center;
+}

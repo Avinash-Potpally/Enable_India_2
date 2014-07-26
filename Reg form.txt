@@ -1,0 +1,31 @@
+<form name="Registration form" action="" method="get">
+	FirstName: <input type="text" label="fname"> &nbsp;&nbsp
+	LastName: <input type="text" label="lname"><br>
+	&nbsp; &nbsp
+	E-Mail: <input type="email" name="email"><br>&nbsp;
+	Password:<input type="password" label="pwd"><br>
+	<input type="radio"  name="sex" value="male">Male  &nbsp; &nbsp;
+	<input type="radio"  name="sex" value="female">Female<br>
+	Age:<input type="text" label="age"> <br>
+	Languages: <select>
+  <option value="Java">Java</option>
+  <option value="C">C language</option>
+  <option value="C++">C plus plus</option>
+  <option value="Php">PHP</option>
+  <option value=".net">net</option>
+<select>
+	<br> <br>
+	No of Mentees:<select>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option> 
+</select>
+<br>
+Phone No: <input type="text" label="phonenumber"><br>
+<textarea rows="4" cols="50" name="Address" form="Adrsform"> </textarea>
+<br>
+
+<input type="Submit"  value="Submit"> 
+&nbsp; &nbsp
+	<input type="Submit"  value="Cancel">
+	
