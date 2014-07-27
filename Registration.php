@@ -16,16 +16,15 @@
 		 $repwd=$_POST['repassword'];
 		if($repwd==$pw)
 		{
-		 $rowset = mysql_query("insert into user_info values ('','$name','$email','$pw','$qual','','$dob','$ph','','$gen','$skype','$fb','$role','')");
-		 //echo"<script>alert('Success');window.location='./index.php';</script>";
-		 //echo"1";
+		 $rowset = mysql_query("insert into user_info values ('','$name','$email','$pw','$qual','','$dob','$ph','','$gen','$skype','$fb','$role','pending')");
+		 echo"<script>alert('Success');</script>";
+		 echo "<script>window.location='./index.php';</script>";
+		// echo"1";
 		}
 		else
 		{
-		echo '<script language="javascript">';
-		echo 'alert("message successfully sent")';
-		echo '</script>';
-		//header( 'Location: registrationForm.php' ) ;
+		echo"<script>alert('Password Mis-Match');</script>";
+		 echo "<script>window.location='./registrationForm.php';</script>";
 		//echo "2";
 		
 		}

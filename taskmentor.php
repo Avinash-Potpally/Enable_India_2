@@ -40,7 +40,9 @@
                       <li style="font-size:.5em; "><a href="#" >Employers</a></li>
                       <li style="font-size:.5em; "><a href="#">Training</a></li>
                       <li style="font-size:.5em; "><a href="#">Partners</a></li>
-                      <li style="font-size:.5em; "><a href="#">Children</a></li>  
+                     <li style="font-size:.5em; "><a href="./mentor.php">Mentor Home</a></li> 
+						<li style="font-size:.5em; "><a href="./mentor_AddCourse.php">Add Courses</a></li>  					  
+                      <li style="font-size:.5em; "><a href="./logout.php">Logout</a></li> 
                     </ul>
                     </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->

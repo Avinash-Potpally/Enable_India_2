@@ -1,0 +1,173 @@
+
+/*function alert_box(message)					
+{
+	
+	bootbox.dialog({
+		message: message, 
+		buttons: {
+			"success" : {
+				"label" : "OK",
+				"className" : "btn-sm btn-primary"
+			}
+		}
+	});
+}
+
+
+function show_box(id) {
+	jQuery('.widget-box.visible').removeClass('visible');
+	jQuery('#'+id).addClass('visible');
+	$('#'+id +' .error-block').addClass('hidden');
+}*/
+	alert_box("AB");		
+jQuery(function($){
+	alert_box("AB 12345");
+	$('#add_student').validate({
+		errorElement: 'div',
+		errorClass: 'help-block',
+		focusInvalid: false,
+		onkeyup:false,
+		rules: {
+			rollno:{
+				required:true,
+				minlength:5
+			},
+			stuemail: {
+				required: true,
+				email:true
+			},
+			studentname: {
+				required: true,
+				minlength: 3
+			},
+			fathername: {
+				required: true,
+				minlength: 3
+			},
+			yearid: {
+				required: true,
+				minlength: 1
+			},
+			dob:{
+					required: true
+				},
+			gender:{
+						required: true
+					}
+			
+			
+		},
+
+		messages: {
+			stuemail: {
+				required: "Please provide a valid email.",
+				stuemail: "Please provide a valid email."
+			},
+			rollno: {
+				required: "Please provide a valid roll no.",
+				minlength: "Please enter roll no more than 5 characters length."
+			},
+			
+			confirmPassword:{
+				required:"Please enter the password to confirm",
+				equalTo:"Please re enter the same password"
+			},
+			
+			studentname: {
+				required: "Please enter your full name.",
+				minlength: "Name should be more than 3 characters length."
+			},
+			
+			fathername: {
+				required: "Please enter your full name.",
+				minlength: "Name should be more than 3 characters length."
+			},
+			yearid: {
+				required: "Please enter your full name.",
+				minlength: "yearid should be more than 1 characters length."
+			},
+			
+			dob: {
+				required: "Please select Date of birth.",
+				//minlength: "yearid should be more than 1 characters length."
+			},
+
+			gender: {
+				required: "Please select gender.",
+				//minlength: "yearid should be more than 1 characters length."
+			}
+			
+		},
+		
+		showErrors: function(errorMap, errorList) 
+		{
+			
+			if(errorList.length!=0)
+			{
+				//console.log(errorList);
+				$('#add_student .error-block').removeClass('hidden');
+				$('#add_student .error-block .message').html(errorList[0].message);
+				
+			}
+			else{
+				$('#add_student .error-block').addClass('hidden');
+				
+			}
+		},
+	
+		submitHandler: function(form) {
+			alert_box("AB11");
+			/*form.p.value = hex_sha512(form.password.value);
+			form.password.value = "";
+			form.confirmPassword.value = "";
+			//console.log(form.serializeArray());*/
+			var postData=$(form).serializeArray();
+			
+			$('#add_student .status-block').removeClass('hidden');
+			$('#add_student input,select,button').attr("disabled",true);
+			//alert_box("AB11");
+			//console.log(postData);
+			$.ajax(
+			{
+				url : "./registration_process.php",
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					//alert_box(data);
+					if(data=="**Successfully Registered**")
+					{
+						$('#login-box').removeClass('hidden');
+						$('#login-box.error-block.message').html(data);
+					}
+					else
+					{
+						$('#add_student.error-block').removeClass('hidden');
+						$('#add_student .error-block .message').html(data);
+					}
+					//data: return data from server
+					//window.location.assign("ma_login.html");
+				},
+				error: function(jqXHR, textStatus, errorThrown) 
+				{
+					//if fails
+					alert_box("Unable to register due to network failure");
+				}
+			}).done(function()
+			{
+				
+				$('#add_student .status-block').addClass('hidden');
+				$('#add_student input,select,button').attr("disabled",false);
+			
+			});
+		}
+		
+	});
+	
+	$("#add_student button[type='reset']").click(function()
+	{
+		console.log("resetting form..");
+		$("#add_student .error-block").addClass('hidden');
+	});
+	
+	

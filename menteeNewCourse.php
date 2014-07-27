@@ -1,3 +1,12 @@
+<?
+session_start();
+include 'connection.php';
+$uid=$_SESSION['uname'];
+//echo $uid;
+$que=mysql_query("select * from user_info where email='$uid'");
+//$cnt=mysql_num_rows($que);
+//echo $cnt;
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -33,20 +42,23 @@
                       <li style="font-size:.5em; "><a href="#" >Employers</a></li>
                       <li style="font-size:.5em; "><a href="#">Training</a></li>
                       <li style="font-size:.5em; "><a href="#">Partners</a></li>
-                      <li style="font-size:.5em; "><a href="#">Children</a></li>  
+                      <li style="font-size:.5em; "><a href="./mentee.php">Mentee Home</a></li>
+					  <li style="font-size:.5em; "><a href="menteeNewCourse.php">new Course</a></li> 
+					   <li style="font-size:.5em; "><a href="./logout.php">Logout</a></li> 					  
                     </ul>
                     </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>
             </h1>
             <div class="row " style="margin-left:5px;" >
-                <div class="col-md-2" style="background-color:white; border-radius:12px;">
+                 <div class="col-md-2" style="background-color:white; border-radius:12px;">
                     <img src="img/profile.jpg"  width="100" height="100" alt="PROFILE PHOTO!" style="padding:5px;">
                     <ul class=" nav nav-pills" >
+					<?if($row=mysql_fetch_array($que)or die(mysql_error())) {?>
                         <li><a href="#">Edit Profile</a></li><br><br>
-                        <span> Arpan Bhandari </span><br>
-                        <span> 1BM11I022 </span><br>
-                        <span>Mob: +91 9632960321</span><br><br>
+                        <span> Name :<?echo $row['name'];?>  </span><br>
+                        <span> Id :<?echo $row['id']?>  </span><br>
+                        <span>Mob: <?echo $row['phone'];}?></span><br><br>
                         <!--<li><a href="#"></a></li><br><br>
                         <li><a href="#"></a></li><br><br>
                         <li><a href="#"></a></li><br><br>-->
@@ -56,12 +68,12 @@
                 <span style="font-family:matura mt script capitals;color:black;margin-left:100px;font-size:30px;">There is an end to everything, except learning!</span>
                 <div class="col-md-9 col-md-offset-1" style="background-color:white; opacity:.95; border-radius:12px;" >
                 <!--    <span style="font-family:matura mt script capitals;color:black;font-size:20px;">There is an end to everything, except learning!</span>-->
-                    <form action="" method="">
+                    <form action="./mentorSelection.php" method="GET">
                         <br>
                         <span style=" margin-left:20px;">Select the kind of course:&nbsp;( Only one course can be chosen )</span><br>
                         <br>
                         <span style=" margin-left:20px;">Technical Courses:</span><br><br>
-                        <select id="technicalcourse" class="form-control" style="width:33%;">
+                        <select name="course1" id="technicalcourse" class="form-control" style="width:33%;">
                             <option>Choose course..</option>
                             <option>Java</option>
                             <option>C/C++</option>
@@ -69,15 +81,15 @@
                         </select>
                         <br><br>
                         <span style=" margin-left:20px;">Job Skills:</span><br><br>
-                        <select id="jobskills" class="form-control" style="width:33%;">
+                        <select name="course2" id="jobskills" class="form-control" style="width:33%;">
                             <option>Choose course..</option>
-                            <option>Marketting</option>
+                            <option>Marketing</option>
                             <option>Management</option>
-                            <option>Teaching</option>
+                            <option>Teaching</option> 
                         </select>
                         <br><br>
                         <span style=" margin-left:20px;">Life Skills:</span><br><br>
-                        <select id="lifeskills" class="form-control" style="width:33%;">
+                        <select name="course3" id="lifeskills" class="form-control" style="width:33%;">
                             <option>Choose course..</option>
                             <option>Communication</option>
                             <option>Counselling</option>

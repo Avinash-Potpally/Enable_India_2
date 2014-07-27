@@ -67,14 +67,14 @@
                     <!--<span id="quote">"No one has ever become poor by helping!"</span>-->
                     <form action="login_valid.php" method="GET">
                         <br>
-                        <input type="text" id="username" name="uname" class="form-control " placeholder="Username">
+                        <input type="text" id="username" name="uname" class="form-control " placeholder="Username" required>
                         <br>
-                        <input type="password" id="Password" name="pwd" class="form-control " placeholder="Password">
+                        <input type="password" id="Password" name="pwd" class="form-control " placeholder="Password" required>
                         <br>
                         <input type="submit" value="Login!" id="login" class="btn btn-primary  "><br>
                         <span style="margin-left:75px;"><a href="#">Forgot Password?</a></span>
                         <br>
-                        &nbsp;<span style="margin-left:75px;"><a href="#">Register here</a></span>
+                        &nbsp;<span style="margin-left:75px;"><a href="./registrationForm.php">Register here</a></span>
 
                     </form>
                 </div>

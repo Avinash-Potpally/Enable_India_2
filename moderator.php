@@ -1,3 +1,15 @@
+<?
+session_start();
+include 'connection.php';
+$uid=$_SESSION['uname'];
+$role=$_SESSION['role'];
+if($role!="Moderator")
+{
+echo "<script>alert('Unauthersized Access');</script>";
+echo "<script>window.location='./index.php';</script>";
+}
+$quer=mysql_query("select * from user_info where email='$uid'");
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -33,32 +45,57 @@
                       <li style="font-size:.5em; "><a href="#" >Employers</a></li>
                       <li style="font-size:.5em; "><a href="#">Training</a></li>
                       <li style="font-size:.5em; "><a href="#">Partners</a></li>
-                      <li style="font-size:.5em; "><a href="#">Children</a></li>  
+					  <li style="font-size:.5em; "><a href="./moderator.php">Moderator Home</a></li>
+                      <li style="font-size:.5em; "><a href="./mentor_mentee_approval.php">Mentor-Mentee</a></li>  
+					  <li style="font-size:.5em; "><a href="./logout.php">Logout</a></li>
                     </ul>
                     </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>
             </h1>
             <div class="row " style="margin-left:5px;" >
-                <div class="col-md-2" style="background-color:white; border-radius:12px;">
+                 <div class="col-md-2" style="background-color:white; border-radius:12px;">
                     <img src="img/profile.jpg"  width="100" height="100" alt="PROFILE PHOTO!" style="padding:5px;">
                     <ul class=" nav nav-pills" >
+					<?if($row=mysql_fetch_array($quer)or die(mysql_error())) {?>
                         <li><a href="#">Edit Profile</a></li><br><br>
-                        <span> Arpan Bhandari </span><br>
-                        <span> 1BM11I022 </span><br>
-                        <span>Mob: +91 9632960321</span><br><br>
-                        
+                        <span> Name :<?echo $row['name'];?>  </span><br>
+                        <span> Id :<?echo $row['id']?>  </span><br>
+                        <span>Mob: <?echo $row['phone'];}?></span><br><br>
+                        <!--<li><a href="#"></a></li><br><br>
+                        <li><a href="#"></a></li><br><br>
+                        <li><a href="#"></a></li><br><br>-->
                     </ul>
                 </div>
                 
                 <span style="font-family:matura mt script capitals;color:black;margin-left:100px;font-size:30px;">With great leadership, comes great responsibility!</span>
                 <div class="col-md-9 col-md-offset-1" style="background-color:white; opacity:.95; border-radius:12px;" >
                 <!--    <span style="font-family:matura mt script capitals;color:black;font-size:20px;">There is an end to everything, except learning!</span>-->
+				<h2>Registration Pending Request<h2>
                     <?php
                         echo "<br>";
-                        echo "Pending requests:<br>";
+                  
+						$que=mysql_query("select * from user_info where status='pending'");
+						?>
+						<table>
+						<tr>
+						<td><b>User</b></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td><b>Action</b></td>
+						</tr>
+						<?while($row=mysql_fetch_array($que)){?>
+						<tr>
+						<td> <?echo $row['email'];?></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td> <a href="./userinfo_approve.php?uid=<?echo $row['email'];?>"><input type="button" value="Approve" class="btn btn-primary"></a></td>
+						</tr>
+						
+						<?}
                         echo "<br>";
                     ?>
+					</table>
                 </div>
             </div>
             

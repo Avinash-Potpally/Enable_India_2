@@ -1,3 +1,17 @@
+<?
+session_start();
+include 'connection.php';
+$uid=$_SESSION['uname'];
+$role=$_SESSION['role'];
+//echo $uid;
+$que=mysql_query("select * from user_info where email='$uid'");
+//$cnt=mysql_num_rows($que);
+if($role!="Mentee")
+{
+echo "<script>alert('Unauthersized Access');</script>";
+echo "<script>window.location='./index.php';</script>";
+}
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -32,7 +46,9 @@
                       <li style="font-size:.5em; "><a href="#" >Employers</a></li>
                       <li style="font-size:.5em; "><a href="#">Training</a></li>
                       <li style="font-size:.5em; "><a href="#">Partners</a></li>
-                      <li style="font-size:.5em; "><a href="#">Children</a></li>  
+					   <li style="font-size:.5em; "><a href="./mentee.php">Mentee Home</a></li>
+					  <li style="font-size:.5em; "><a href="menteeNewCourse.php">new Course</a></li> 
+					   <li style="font-size:.5em; "><a href="./logout.php">Logout</a></li>
                     </ul>
                     </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
@@ -40,12 +56,13 @@
             </h1>
             <div class="row " style="margin-left:5px;" >
                 <div class="col-md-2" style="background-color:white; border-radius:12px;">
-                    <img src="img/profile.jpg"  width="100" height="100" alt="PROFILE PHOTO!" style="padding:5px;">
+                    <img src="img/profile.jpg"  width="100" height="100" alt="PROFILE PHOTO" style="padding:5px;">
                     <ul class=" nav nav-pills" >
+					<?if($row=mysql_fetch_array($que)or die(mysql_error())) {?>
                         <li><a href="#">Edit Profile</a></li><br><br>
-                        <span> Arpan Bhandari </span><br>
-                        <span> 1BM11I022 </span><br>
-                        <span>Mob: +91 9632960321</span><br><br>
+                        <span> Name :<?echo $row['name'];?>  </span><br>
+                        <span> Id :<?echo $row['id']?>  </span><br>
+                        <span>Mob: <?echo $row['phone'];}?></span><br><br>
                         <!--<li><a href="#"></a></li><br><br>
                         <li><a href="#"></a></li><br><br>
                         <li><a href="#"></a></li><br><br>-->
@@ -54,11 +71,17 @@
                 
                 <div class="col-md-9 col-md-offset-1" style="background-color:white; opacity:.95; border-radius:12px;" >
                     <?php
-                        echo "<span style=\"color:black;\"> Current course:</span><br><br>";
-                        echo "<span style=\"color:black;\"> Percentage complete:</span><br><br>";
-                        echo "<span style=\"color:black;\"> Current details:</span><br><br><br><br><br>";
-                        echo "<span style=\"color:black;\"> <a href=\"#\">Interact with Mentor</a></span><br><br><br>";
-
+					$x=mysql_query("select * from mentor_mentee where m_id='$uid'");
+					$cnt=mysql_num_rows($x);
+					while($row=mysql_fetch_array($x))
+					{
+                           echo "<span style=\"color:black;\"> Number of learning courses: $cnt</span><br><br>";
+								echo "<span style=\"color:black;\"> Mentor :";echo $row['mt_id'];echo"</span><br><br>";
+								echo "<span style=\"color:black;\"> Course: <a href='./taskmentee.php'>";echo $row['course'];echo"</a></span><br><br><br><br><br>";
+                        ?>
+						<a href="mailto:<?echo $row['mt_id'];?>">Interact With Mentor</a><br><br>
+						<?
+}
                     ?>
                 </div>
             </div>

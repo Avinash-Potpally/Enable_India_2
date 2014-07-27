@@ -2,15 +2,13 @@
 session_start();
 include 'connection.php';
 $uid=$_SESSION['uname'];
-echo $uid;
 $role=$_SESSION['role'];
-$que=mysql_query("select * from user_info where email='$uid'");
-//$cnt=mysql_num_rows($que);
-if($role!="Mentor")
+if($role!="Moderator")
 {
 echo "<script>alert('Unauthersized Access');</script>";
 echo "<script>window.location='./index.php';</script>";
 }
+$quer=mysql_query("select * from user_info where email='$uid'");
 ?>
 <html>
     <head>
@@ -21,6 +19,7 @@ echo "<script>window.location='./index.php';</script>";
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+       
     </head>
     <body background="img/background.jpg" style="background-color:#808080">
         <div class="container" >
@@ -46,22 +45,22 @@ echo "<script>window.location='./index.php';</script>";
                       <li style="font-size:.5em; "><a href="#" >Employers</a></li>
                       <li style="font-size:.5em; "><a href="#">Training</a></li>
                       <li style="font-size:.5em; "><a href="#">Partners</a></li>
-					  <li style="font-size:.5em; "><a href="./mentor.php">Mentor Home</a></li> 
-						<li style="font-size:.5em; "><a href="./mentor_AddCourse.php">Add Courses</a></li>  					  
-                      <li style="font-size:.5em; "><a href="./logout.php">Logout</a></li>  
+					  <li style="font-size:.5em; "><a href="./moderator.php">Moderator Home</a></li>
+                      <li style="font-size:.5em; "><a href="./mentor_mentee_approval.php">Mentor-Mentee</a></li>  
+					  <li style="font-size:.5em; "><a href="./logout.php">Logout</a></li>
                     </ul>
                     </div><!-- /.navbar-collapse -->
                     </div><!-- /.container-fluid -->
                 </nav>
             </h1>
             <div class="row " style="margin-left:5px;" >
-                <div class="col-md-2" style="background-color:white; border-radius:12px;">
+                 <div class="col-md-2" style="background-color:white; border-radius:12px;">
                     <img src="img/profile.jpg"  width="100" height="100" alt="PROFILE PHOTO!" style="padding:5px;">
                     <ul class=" nav nav-pills" >
-					<?if($row=mysql_fetch_array($que)or die(mysql_error())) {?>
+					<?if($row=mysql_fetch_array($quer)or die(mysql_error())) {?>
                         <li><a href="#">Edit Profile</a></li><br><br>
-                        <span> Name :<?echo $row['name'];?> </span><br>
-                        <span> Id :<?echo $row['id']?> </span><br>
+                        <span> Name :<?echo $row['name'];?>  </span><br>
+                        <span> Id :<?echo $row['id']?>  </span><br>
                         <span>Mob: <?echo $row['phone'];}?></span><br><br>
                         <!--<li><a href="#"></a></li><br><br>
                         <li><a href="#"></a></li><br><br>
@@ -69,22 +68,38 @@ echo "<script>window.location='./index.php';</script>";
                     </ul>
                 </div>
                 
+                <span style="font-family:matura mt script capitals;color:black;margin-left:100px;font-size:30px;">With great leadership, comes great responsibility!</span>
                 <div class="col-md-9 col-md-offset-1" style="background-color:white; opacity:.95; border-radius:12px;" >
+                <!--    <span style="font-family:matura mt script capitals;color:black;font-size:20px;">There is an end to everything, except learning!</span>-->
+				<h2>Mentor-Mentee Linking Pending Request<h2>
                     <?php
-					$x=mysql_query("select * from mentor_mentee where mt_id='$uid'");
-					$cnt=mysql_num_rows($x);
-					while($row=mysql_fetch_array($x))
-					{
-                        echo "<span style=\"color:black;\"> Number of learning Mentees: $cnt</span><br><br>";
-                        echo "<span style=\"color:black;\"> List of Mentees:";echo $row['m_id'];echo"</span><br><br>";
-                        echo "<span style=\"color:black;\"> Course: <a href='./taskmentor.php'>";echo $row['course'];echo"</a></span><br><br><br><br><br>";
-                        echo "<span style=\"color:black;\"> Want to share knowledge? <a href=\"#\">Take up new Challenge!</a> </span><br><br><br>";
-					}
+                        echo "<br>";
+                  
+						$que=mysql_query("select * from mentee_req where mod_approval='pending'");
+						?>
+						<table>
+						<tr>
+						<td><b>User</b></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td><b>Action</b></td>
+						</tr>
+						<?while($row=mysql_fetch_array($que)){?>
+						<tr>
+						<td> <?echo $row['mt_id'];?></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td> <a href="./mentor_mentee_approve.php?uid=<?echo $row['mt_id'];?>&&mid=<?echo $row['mid'];?>"><input type="button" value="Approve" class="btn btn-primary"></a></td>
+						</tr>
+						
+						<?}
+                        echo "<br>";
                     ?>
+					</table>
                 </div>
             </div>
             
         </div>
-        
+         
     </body>
 </html>
